@@ -3,7 +3,8 @@ import { Text, View, Image, Linking } from 'react-native';
 import Card from './helpers/Card';
 import CardSection from './helpers/CardSection';
 
-const TabDetail = () => {
+const TabDetail = ({ data }) => {
+  const { drink, price } = data;
   return (
     <Card>
       <CardSection>
@@ -21,8 +22,8 @@ const TabDetail = () => {
           />
         </View>
         <View style={styles.headerContentStyle}>
-          <Text style={styles.headerTextStyle}>CockTail</Text>
-          <Text style={styles.priceStyle}>$9</Text>
+          <Text style={styles.headerTextStyle}>{drink}</Text>
+          <Text style={styles.priceStyle}>${price}</Text>
         </View>
       </CardSection>
     </Card>

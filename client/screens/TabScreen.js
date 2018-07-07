@@ -1,20 +1,32 @@
 import React from 'react';
-import { ScrollView, Text, View } from 'react-native';
+import { ScrollView, Text, View, FlatList } from 'react-native';
+import firebase from 'firebase';
 import TabItem from '../components/TabItem';
 import Header from '../components/Header';
+
 export default class TabScreen extends React.Component {
-  // state = {};
-  // componentDidMount() {
-  //   //fetch data from firebase
-  // }
-  // renderItems = () => {
-  //   return this.state.albums.map(album => <TabItem data={data} />);
-  // };
+  state = {
+    items: []
+  };
+  componentDidMount() {
+    //fetch data from firebase
+    let ref = firebase.database().ref('Funtime Bar/David Margolin/tab');
+    ref.on('value', snapshot => {
+      let result = snapshot.val();
+      let list = [];
+      for (let row of Object.keys(result)) {
+        list.push(result[row]);
+      }
+      console.log(list);
+      this.setState({ items: list });
+    });
+  }
+
   render() {
     return (
       <View>
         <Header />
-        <TabItem />
+        {this.state.items.map(data => <TabItem data={data} />)}
       </View>
     );
   }
