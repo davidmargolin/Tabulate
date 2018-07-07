@@ -3,8 +3,9 @@ import { View, Text, StyleSheet } from 'react-native';
 import Header from '../components/Header'
 import TabScreen from './TabScreen'
 import { BarCodeScanner, Permissions } from 'expo';
+import {withNavigation} from 'react-navigation'
 
-export default class ScannerScreen extends React.Component {
+class ScannerScreen extends React.Component {
   state = {
     hasCameraPermission: null,
     sessionStarted: true,
@@ -49,3 +50,5 @@ export default class ScannerScreen extends React.Component {
     }
   }
 }
+
+export default withNavigation(ScannerScreen)
