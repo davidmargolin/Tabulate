@@ -1,21 +1,20 @@
 import React, { Component } from 'react';
 import { Text, View, Image, Linking } from 'react-native';
-import CardSection from './helpers/CardSection';
 
 export default TabDetail = ({ data }) => {
   const { drink, price } = data;
   return (
-      <CardSection>
+    <View style={styles.itemStyle}>
 
-        <Image
-          style={styles.thumbnailStyle}
-          source={require('../images/cocktail.jpg')}
-        />
-        <View style={styles.headerContentStyle}>
-          <Text style={styles.headerTextStyle}>{drink}</Text>
-          <Text style={styles.priceStyle}>${price}</Text>
-        </View>
-      </CardSection>
+      <Image
+        style={styles.thumbnailStyle}
+        source={require('../images/cocktail.jpg')}
+      />
+      <View style={styles.headerContentStyle}>
+        <Text style={styles.headerTextStyle}>{drink}</Text>
+        <Text style={styles.priceStyle}>${Number.parseFloat(price).toFixed(2).toString()}</Text>
+      </View>
+    </View>
   );
 };
 
@@ -39,5 +38,11 @@ const styles = {
   },
   priceStyle: {
     fontSize: 18,
+  },
+  itemStyle: {
+    borderBottomWidth: 0.2,
+    padding: 5,
+    flexDirection: 'row',
+    borderColor: '#ddd',
   }
 };
