@@ -43,6 +43,7 @@ const styles = {
     borderBottomWidth: 0.2,
     padding: 5,
     flexDirection: 'row',
+    backgroundColor: 'white',
     borderColor: '#ddd',
   }
 };
