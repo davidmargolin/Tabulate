@@ -24,7 +24,7 @@ export default class TabScreen extends React.Component {
 
   render() {
     return (
-      <View>
+      <View style={{backgroundColor: 'white', flex: 1}}>
         {this.state.items.map(data => <TabItem data={data} />)}
       </View>
     );

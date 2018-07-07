@@ -7,14 +7,11 @@ import TabScreen from './screens/TabScreen';
 import firebase from 'firebase';
 const MainNavigator = createStackNavigator(
   {
-    welcome: {
-      screen: TabScreen
+    form: {
+      screen: ScannerScreen
     },
     profile: {
       screen: ProfileScreen
-    },
-    form: {
-      screen: TabScreen
     }
   },
   {
