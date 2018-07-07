@@ -8,7 +8,7 @@ import TabScreen from './screens/TabScreen';
 const MainNavigator = createStackNavigator(
   {
     welcome: {
-      screen: ScannerScreen
+      screen: TabScreen
     },
     profile: {
       screen: ProfileScreen
