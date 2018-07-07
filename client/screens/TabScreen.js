@@ -5,6 +5,7 @@ export default class TabScreen extends React.Component {
   render() {
     return (
       <View>
+        <Header/>
         <Text>TabScreen</Text>
         <Text>TabScreen</Text>
         <Text>TabScreen</Text>
