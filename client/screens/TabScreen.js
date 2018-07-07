@@ -17,7 +17,7 @@ export default class TabScreen extends React.Component {
       for (let row of Object.keys(result)) {
         list.push(result[row]);
       }
-      console.log(list);
+      //console.log(list);
       this.setState({ items: list });
     });
   }
