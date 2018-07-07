@@ -4,11 +4,11 @@ import { createStackNavigator } from 'react-navigation';
 import ScannerScreen from './screens/ScannerScreen';
 import ProfileScreen from './screens/ProfileScreen';
 import TabScreen from './screens/TabScreen';
-
+import firebase from 'firebase';
 const MainNavigator = createStackNavigator(
   {
     welcome: {
-      screen: ScannerScreen
+      screen: TabScreen
     },
     profile: {
       screen: ProfileScreen
@@ -23,6 +23,17 @@ const MainNavigator = createStackNavigator(
 );
 
 export default class App extends React.Component {
+  componentWillMount() {
+    const config = {
+      apiKey: 'AIzaSyCFNRnholi7b2qNHflrKZVLJDs498QJ0jE',
+      authDomain: 'tabulate-b824d.firebaseapp.com',
+      databaseURL: 'https://tabulate-b824d.firebaseio.com',
+      projectId: 'tabulate-b824d',
+      storageBucket: 'tabulate-b824d.appspot.com',
+      messagingSenderId: '162137507006'
+    };
+    firebase.initializeApp(config);
+  }
   render() {
     return (
       <View style={styles.container}>
@@ -36,7 +47,5 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff'
-    //  alignItems: 'center',
-    //justifyContent: 'center'
   }
 });
