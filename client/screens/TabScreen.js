@@ -1,7 +1,7 @@
 import React from 'react';
 import { ScrollView, Text, View } from 'react-native';
 import TabItem from '../components/TabItem';
-
+import Header from '../components/Header';
 export default class TabScreen extends React.Component {
   // state = {};
   // componentDidMount() {
@@ -12,8 +12,8 @@ export default class TabScreen extends React.Component {
   // };
   render() {
     return (
-      //<ScrollView>{this.renderItems()}</ScrollView>;
-      <View style={{ justifyContent: 'center', flex: 1 }}>
+      <View>
+        <Header />
         <TabItem />
       </View>
     );
