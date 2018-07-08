@@ -26,6 +26,7 @@ export default class HomeScreen extends React.Component {
           counter++;
         }
       }
+      list.push(sublist);
       this.setState({ items: list });
     });
   }
@@ -42,6 +43,13 @@ export default class HomeScreen extends React.Component {
             return (
               <View style={{ flex: 1, flexDirection: 'row' }}>
                 {item.item.map(item => <DetailScreen data={item} />)}
+                {item.item.length === 2 && <View style={{ flex: 1 }} />}
+                {item.item.length === 1 && (
+                  <View style={{ flex: 2 }}>
+                    <View style={{ flex: 1 }} />
+                    <View style={{ flex: 1 }} />
+                  </View>
+                )}
               </View>
             );
           }}

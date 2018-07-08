@@ -22,23 +22,30 @@ class ItemDetail extends React.Component {
     modalVisible: false,
     items: [],
     drink: '',
-    price: ''
+    price: '',
+    name: ''
   };
 
   setModalVisible(visible) {
     this.setState({ modalVisible: visible });
   }
   componentDidMount() {
-    if ('tab' in this.props.data) {
-      let result = this.props.data.tab;
-      let list = [];
-      for (let row of Object.keys(result)) {
-        list.push(result[row]);
+    let ref = firebase.database().ref('Funtime Bar/Helghardt Avenant/tab');
+    ref.on('value', snapshot => {
+      let result = snapshot.val();
+      if (result != null) {
+        let list = [];
+        for (let row of Object.keys(result)) {
+          list.push(result[row]);
+        }
+        this.setState({ items: list });
+      } else {
+        this.setState({ items: [], modalVisible: false });
       }
-      this.setState({ items: list });
-    }
+    });
     //console.log(list);
   }
+
   onUpload = () => {
     const { drink, price } = this.state;
     firebase
@@ -60,8 +67,8 @@ class ItemDetail extends React.Component {
       <View style={styles.cardStyle}>
         <View style={styles.cardSection}>
           <View style={{ flex: 1 }}>
-            <Text style={headerTextStyle}>{this.props.data.info.name}</Text>
-            <Text style={headerTextStyle}>
+            <Text style={{ fontSize: 25 }}>{this.props.data.info.name}</Text>
+            <Text style={{ fontSize: 25 }}>
               Table#: {this.props.data.info.customerNum}
             </Text>
           </View>
@@ -104,10 +111,12 @@ class ItemDetail extends React.Component {
                     </View>
 
                     <View style={headerContentStyle}>
-                      <Text style={headerTextStyle}>
+                      <Text style={{ fontSize: 25 }}>
                         {this.props.data.info.name}
                       </Text>
-                      <Text>{this.props.data.info.customerNum}</Text>
+                      <Text style={{ fontSize: 25 }}>
+                        {this.props.data.info.customerNum}
+                      </Text>
                     </View>
                   </CardSection>
                   <CardSection>
@@ -219,7 +228,7 @@ const styles = {
     marginBottom: 10,
     color: 'black',
     paddingHorizontal: 10,
-    fontSize: 20
+    fontSize: 28
   },
   joinContainer: {
     paddingVertical: 12,
@@ -238,7 +247,7 @@ const styles = {
     textAlign: 'center',
     color: '#FFFFFF',
     fontWeight: 'bold',
-    fontSize: 18
+    fontSize: 25
   }
 };
 export default ItemDetail;
