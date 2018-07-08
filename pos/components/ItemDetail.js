@@ -6,9 +6,11 @@ import {
   Linking,
   Modal,
   TouchableOpacity,
+  TouchableHighlight,
   FlatList,
   TextInput
 } from 'react-native';
+import firebase from 'firebase';
 import Card from './Card';
 import CardSection from './CardSection';
 import Button from './Button';
@@ -35,6 +37,15 @@ class ItemDetail extends React.Component {
     this.setState({ items: list });
     //console.log(list);
   }
+  onUpload = () => {
+    const { drink, price } = this.state;
+    firebase
+      .database()
+      .ref(`Funtime Bar/${this.props.data.info.name}/tab`)
+      .push({ drink, price });
+    this.setState({ items: [...this.state.items, { drink, price }] });
+    this.setState({ drink: '', price: '' });
+  };
   render() {
     const {
       thumbnailStyle,
@@ -59,6 +70,7 @@ class ItemDetail extends React.Component {
             source={{ uri: this.props.data.info.picture }}
           />
         </View>
+
         <View style={styles.cardSection}>
           <Button
             onPress={() => {
@@ -69,60 +81,76 @@ class ItemDetail extends React.Component {
           </Button>
         </View>
 
-        <View
-          style={{
-            marginTop: 22
-          }}
-        >
+        <View style={{ marginTop: 22 }}>
           <Modal
             animationType="fade"
-            transparent
+            transparent={false}
             visible={this.state.modalVisible}
             onRequestClose={() => {
               alert('Modal has been closed.');
             }}
           >
-            <View style={{ backgroundColor: 'rgba(0,0,0,0.1)' }}>
-              <View
-                style={{
-                  margin: 100,
-                  flex: 1
-                }}
-              >
-                <View style={styles.cardSections}>
-                  <View style={{ flex: 1 }}>
+            <View style={{ marginTop: 22 }}>
+              <View>
+                <Card>
+                  <CardSection>
                     <View style={thumbnailContainerStyle}>
                       <Image
-                        style={{ height: 90, width: 90 }}
+                        style={{ width: 80, height: 80 }}
                         source={{ uri: this.props.data.info.picture }}
                       />
                     </View>
 
-                    <Text
-                      style={{ fontSize: 25 }}
+                    <View style={headerContentStyle}>
+                      <Text style={headerTextStyle}>
+                        {this.props.data.info.name}
+                      </Text>
+                      <Text>{this.props.data.info.customerNum}</Text>
+                    </View>
+                  </CardSection>
+                  <CardSection>
+                    <FlatList
+                      style={{ flex: 1 }}
+                      data={this.state.items}
+                      renderItem={({ item }) => <TabItem data={item} />}
+                    />
+                  </CardSection>
+
+                  <TextInput
+                    placeholder="Drink"
+                    style={styles.input}
+                    onChangeText={drink => this.setState({ drink })}
+                    value={this.state.drink}
+                    returnKeyType="next"
+                    onSubmitEditing={() => this.priceInput.focus()}
+                  />
+                  <TextInput
+                    placeholder="Price"
+                    style={styles.input}
+                    onChangeText={price => this.setState({ price })}
+                    value={this.state.price}
+                    ref={inputs => (this.priceInput = inputs)}
+                    keyboardType="numeric"
+                  />
+                  <TouchableOpacity
+                    style={styles.buttonContainer}
+                    onPress={() => {
+                      this.onUpload();
+                    }}
+                  >
+                    <Text style={styles.buttonText}>Add Drink</Text>
+                  </TouchableOpacity>
+
+                  <CardSection>
+                    <Button
                       onPress={() => {
                         this.setModalVisible(!this.state.modalVisible);
                       }}
                     >
-                      {this.props.data.info.name}
-                    </Text>
-
-                    <Text style={{ fontSize: 25 }}>
-                      {this.props.data.info.customerNum}
-                    </Text>
-                  </View>
-
-                  <FlatList
-                    style={{ flex: 1 }}
-                    data={this.state.items}
-                    renderItem={({ item }) => <TabItem data={item} />}
-                  />
-                </View>
-                <TextInput placeholder="Drink Name" style={styles.input} />
-                <TextInput placeholder="Price" style={styles.input} />
-                <TouchableOpacity style={styles.joinContainer}>
-                  <Text style={styles.joinText}>Add Drink</Text>
-                </TouchableOpacity>
+                      Close Modal
+                    </Button>
+                  </CardSection>
+                </Card>
               </View>
             </View>
           </Modal>
@@ -187,7 +215,7 @@ const styles = {
     height: 40,
     backgroundColor: 'rgba(255,255,255,0.2)',
     marginBottom: 10,
-    color: '#FFF',
+    color: 'black',
     paddingHorizontal: 10,
     fontSize: 20
   },
@@ -198,6 +226,16 @@ const styles = {
   joinText: {
     textAlign: 'center',
     color: '#FFFFFF',
+    fontSize: 18
+  },
+  buttonContainer: {
+    backgroundColor: '#2980b9',
+    paddingVertical: 12
+  },
+  buttonText: {
+    textAlign: 'center',
+    color: '#FFFFFF',
+    fontWeight: 'bold',
     fontSize: 18
   }
 };

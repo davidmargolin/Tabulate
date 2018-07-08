@@ -36,11 +36,10 @@ export default class HomeScreen extends React.Component {
           style={{ flex: 1 }}
           data={this.state.items}
           renderItem={item => {
+            console.log(item.item);
             return (
               <View style={{ flex: 1, flexDirection: 'row' }}>
-                <DetailScreen data={item.item[0]} />
-                <DetailScreen data={item.item[1]} />
-                <DetailScreen data={item.item[2]} />
+                {item.item.map(item => <DetailScreen data={item} />)}
               </View>
             );
           }}
