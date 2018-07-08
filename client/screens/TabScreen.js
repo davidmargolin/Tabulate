@@ -128,7 +128,7 @@ export default class TabScreen extends React.Component {
                 this.props.end()
               }}
               style={{alignItems: 'center', justifyContent: 'center',flex:1, backgroundColor: 'black', margin: 8, borderRadius: 10}}>
-              <Text style={{margin: 12, fontSize: 18, color: 'white'}}>Tab Closed. Need A Ride?}</Text>
+              <Text style={{margin: 12, fontSize: 18, color: 'white'}}>Tab Closed. Need A Ride?</Text>
             </TouchableOpacity><TouchableOpacity
               onPress={()=>this.props.end()}
               style={{alignItems: 'center', justifyContent: 'center', margin: 8, borderRadius: 10, borderColor: 'black', borderWidth: 3}}>
