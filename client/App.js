@@ -6,12 +6,6 @@ import ProfileScreen from './screens/ProfileScreen';
 import TabScreen from './screens/TabScreen';
 import firebase from 'firebase';
 
-<<<<<<< HEAD
-=======
-
-
-
->>>>>>> 1447c40025b17afa0ea56b0050908648338f7493
 const MainNavigator = createStackNavigator(
   {
     form: {

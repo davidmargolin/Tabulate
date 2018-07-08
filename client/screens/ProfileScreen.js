@@ -122,7 +122,7 @@ export default class ProfileScreen extends React.Component {
                 style={{width: 24, height: 24, margin: 8}}
                 source={Platform.OS === 'ios' ?  require('../images/ic_action_chevron_left.png') : require('../images/ic_action_arrow_back.png')}
               />
-              <Text style={{color: 'white', fontSize: 16}}>Return</Text>
+              <Text style={{color: 'white', fontSize: 16}}>Tabulate</Text>
             </TouchableOpacity>
 
           </View>
