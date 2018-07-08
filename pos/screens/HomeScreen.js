@@ -54,7 +54,6 @@ export default class HomeScreen extends React.Component {
             );
           }}
         />
-        <Text onPress={() => console.log(this.state.items)}>Debugg</Text>
       </View>
     );
   }
