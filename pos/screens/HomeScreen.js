@@ -3,6 +3,7 @@ import { View, Text, FlatList } from 'react-native';
 import firebase from 'firebase';
 import DetailScreen from './DetailScreen';
 import ItemDetail from '../components/ItemDetail';
+import Header from '../components/Header';
 
 export default class HomeScreen extends React.Component {
   state = {
@@ -32,15 +33,15 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
+        <Header />
         <FlatList
           style={{ flex: 1 }}
           data={this.state.items}
           renderItem={item => {
+            console.log(item.item);
             return (
               <View style={{ flex: 1, flexDirection: 'row' }}>
-                <DetailScreen data={item.item[0]} />
-                <DetailScreen data={item.item[1]} />
-                <DetailScreen data={item.item[2]} />
+                {item.item.map(item => <DetailScreen data={item} />)}
               </View>
             );
           }}
