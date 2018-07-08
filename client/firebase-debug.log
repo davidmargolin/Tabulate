@@ -1,0 +1,47 @@
+[debug] [2018-07-08T05:54:25.127Z] ----------------------------------------------------------------------
+[debug] [2018-07-08T05:54:25.129Z] Command:       /usr/local/bin/node /usr/local/bin/firebase serve --only functions
+[debug] [2018-07-08T05:54:25.129Z] CLI Version:   3.19.3
+[debug] [2018-07-08T05:54:25.129Z] Platform:      darwin
+[debug] [2018-07-08T05:54:25.129Z] Node Version:  v10.0.0
+[debug] [2018-07-08T05:54:25.130Z] Time:          Sun Jul 08 2018 01:54:25 GMT-0400 (EDT)
+[debug] [2018-07-08T05:54:25.130Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-07-08T05:54:25.141Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-07-08T05:54:25.142Z] > authorizing via signed-in user
+[debug] [2018-07-08T05:54:25.144Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/tabulate-b824d  
+  
+ Sun Jul 08 2018 01:54:25 GMT-0400 (EDT)
+[debug] [2018-07-08T05:54:25.613Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-08T05:54:25.614Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/tabulate-b824d/tokens  
+  
+ Sun Jul 08 2018 01:54:25 GMT-0400 (EDT)
+[debug] [2018-07-08T05:54:25.939Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-08T05:54:25.940Z] >>> HTTP REQUEST GET https://cloudresourcemanager.googleapis.com/v1/projects/tabulate-b824d  
+  
+ Sun Jul 08 2018 01:54:25 GMT-0400 (EDT)
+[debug] [2018-07-08T05:54:26.088Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Serving from '/Users/shea/Documents/RehiveSum18/Tabulate/client'...
+[info] 
+[info] i  functions: Preparing to emulate functions.
+[debug] [2018-07-08T05:54:26.943Z] Fetching environment
+[debug] [2018-07-08T05:54:26.944Z] >>> HTTP REQUEST GET https://mobilesdk-pa.googleapis.com/v1/projects/162137507006:getServerAppConfig  
+  
+ Sun Jul 08 2018 01:54:26 GMT-0400 (EDT)
+[debug] [2018-07-08T05:54:27.228Z] <<< HTTP RESPONSE 200
+[debug] [2018-07-08T05:54:27.228Z] Starting @google-cloud/functions-emulator
+[debug] [2018-07-08T05:54:28.789Z] Parsing function triggers
+[debug] [2018-07-08T05:54:29.543Z] Error while deploying to emulator: RangeError [ERR_OUT_OF_RANGE]: The value of "value" is out of range. It must be >= -2147483648 and <= 2147483647. Received 2858637923
+RangeError [ERR_OUT_OF_RANGE]: The value of "value" is out of range. It must be >= -2147483648 and <= 2147483647. Received 2858637923
+    at checkInt (internal/buffer.js:35:11)
+    at writeU_Int32LE (internal/buffer.js:515:3)
+    at Buffer.writeInt32LE (internal/buffer.js:684:10)
+    at Object.entryHeaderToBinary (/usr/local/lib/node_modules/firebase-tools/node_modules/adm-zip/headers/entryHeader.js:216:18)
+    at Object.packHeader (/usr/local/lib/node_modules/firebase-tools/node_modules/adm-zip/zipEntry.js:260:39)
+    at /usr/local/lib/node_modules/firebase-tools/node_modules/adm-zip/zipFile.js:198:41
+    at Array.forEach (<anonymous>)
+    at Object.compressToBuffer (/usr/local/lib/node_modules/firebase-tools/node_modules/adm-zip/zipFile.js:182:23)
+    at Object.writeZip (/usr/local/lib/node_modules/firebase-tools/node_modules/adm-zip/adm-zip.js:454:32)
+    at client.generateUploadUrl.then.then (/usr/local/lib/node_modules/firebase-tools/node_modules/@google-cloud/functions-emulator/src/cli/controller.js:168:13)
+[warn] ⚠  functions: Failed to emulate payForDrinks
+[info] i  functions: No HTTPS functions found. Use firebase functions:shell if you would like to emulate other types of functions.
