@@ -62,7 +62,7 @@ class ItemDetail extends React.Component {
           <View style={{ flex: 1 }}>
             <Text style={headerTextStyle}>{this.props.data.info.name}</Text>
             <Text style={headerTextStyle}>
-              {this.props.data.info.customerNum}
+              Table#: {this.props.data.info.customerNum}
             </Text>
           </View>
         </View>
