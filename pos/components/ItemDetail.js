@@ -29,12 +29,14 @@ class ItemDetail extends React.Component {
     this.setState({ modalVisible: visible });
   }
   componentDidMount() {
-    let result = this.props.data.tab;
-    let list = [];
-    for (let row of Object.keys(result)) {
-      list.push(result[row]);
+    if ('tab' in this.props.data) {
+      let result = this.props.data.tab;
+      let list = [];
+      for (let row of Object.keys(result)) {
+        list.push(result[row]);
+      }
+      this.setState({ items: list });
     }
-    this.setState({ items: list });
     //console.log(list);
   }
   onUpload = () => {
