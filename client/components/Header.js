@@ -12,17 +12,22 @@ class Header extends React.Component{
       <View style={{paddingTop: STATUSBAR_HEIGHT, backgroundColor: '#9428ff'}}>
         <View style={{marginVertical: 8,marginLeft: 12,marginRight: 8, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}}>
           <Text style={{color: 'white', fontSize: 18}}>Tabulate</Text>
+          {/* <Image
+            resizeMode="contain"
+            style={{width: 50, height: null, flex: 1}}
+            source={require('../images/tabulatelgw.png')}
+          /> */}
           <TouchableOpacity
             onPress={()=> this.props.navigation.navigate('profile')}
             style={{alignItems: 'center', flexDirection: 'row', justifyContent: 'flex-end'}}>
-            <Text style={{color: 'white', fontSize: 18}}>David Margolin</Text>
+            <Text style={{color: 'white', fontSize: 18}}>Helghardt Avenant</Text>
             <Image
               style={{height: 34, width: 34, borderRadius: 17, marginLeft: 8, borderColor: 'white', borderWidth: 2}}
-              source={{uri:'https://vignette.wikia.nocookie.net/naginoasukara/images/8/86/Placeholder_person.png/revision/latest/scale-to-width-down/480?cb=20130924151342'}}
+              source={require('../images/helghardt.jpg')}
             />
           </TouchableOpacity>
         </View>
-        <Text style={{textAlign: 'center', color: 'white', margin: 8, fontSize: 16}}>{this.props.bar}</Text>
+        <Text style={{textAlign: 'center', color: 'white', margin: 8, fontSize: 20}}>{this.props.bar}</Text>
       </View>
     )
   }
