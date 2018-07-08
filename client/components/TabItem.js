@@ -6,10 +6,10 @@ export default TabDetail = ({ data }) => {
   return (
     <View style={styles.itemStyle}>
 
-      <Image
+      {/* <Image
         style={styles.thumbnailStyle}
         source={require('../images/cocktail.jpg')}
-      />
+      /> */}
       <View style={styles.headerContentStyle}>
         <Text style={styles.headerTextStyle}>{drink}</Text>
         <Text style={styles.priceStyle}>${Number.parseFloat(price).toFixed(2).toString()}</Text>
@@ -24,7 +24,8 @@ const styles = {
     flex: 1,
     alignItems: 'center',
     marginHorizontal: 8,
-    justifyContent: 'space-between'
+    justifyContent: 'space-between',
+    marginVertical: 12
   },
   headerTextStyle: {
     fontSize: 18
@@ -40,7 +41,7 @@ const styles = {
     fontSize: 18,
   },
   itemStyle: {
-    borderBottomWidth: 0.2,
+    borderBottomWidth: 0.5,
     padding: 5,
     flexDirection: 'row',
     backgroundColor: 'white',
