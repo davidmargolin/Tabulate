@@ -2,7 +2,7 @@
 
 <h2>Tabulate - Point of sale and mobile companion app for bars and restaurants</h2>
 <h4>A virtual tab between merchants and customers</h4>
-<h4>Winnter at Rehive Fintech Challenge 2018</h4>
+<h4>Winner at Rehive Fintech Challenge 2018</h4>
 <br>
 <br>
 <br>
